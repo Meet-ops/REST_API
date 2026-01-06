@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>All Posts</title>
+    <link rel="stylesheet" href="/styles.css">
+</head>
+
+<body>
+    <div class="container">
+        <h1>Global Feed</h1>
+
+        <% for(post of posts){ %>
+            <div class="post">
+                <div class="id">ID: <%= post.id %>
+                </div>
+                <div class="user">@<%= post.username %>
+                </div>
+                <div class="content">
+                    <%= post.content %>
+                </div>
+
+                <div class="actions">
+                    <a href="/posts/<%= post.id %>" class="btn">View</a>
+                    <a href="/posts/<%= post.id %>/edit" class="btn"
+                        style="background: linear-gradient(45deg, #f093fb, #f5576c);">Edit</a>
+                    <form action="/posts/<%= post.id %>?_method=DELETE" method="POST" style="display:inline;">
+                        <button
+                            style="background: linear-gradient(45deg, #ff9a9e, #fecfef); color: #333;">Delete</button>
+                    </form>
+                </div>
+            </div>
+            <% } %>
+
+                <div class="create-btn-container">
+                    <a href="/posts/new" class="btn btn-large">Create New Post</a>
+                </div>
+    </div>
+</body>
+
+</html>
